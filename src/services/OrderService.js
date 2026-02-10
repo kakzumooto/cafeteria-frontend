@@ -1,14 +1,14 @@
 // src/services/OrderService.js
 import { API_URL } from '../api/config';
 
-const API_URL = `${API_URL}/api/ordenes`;
+const ORDENES_URL = `${API_URL}/api/ordenes`;
 
 export const getMisOrdenes = async () => {
     const token = localStorage.getItem('token');
     if (!token) return [];
 
     try {
-        const response = await fetch(`${API_URL}/mis-ordenes`, {
+        const response = await fetch(`${ORDENES_URL}/mis-ordenes`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,

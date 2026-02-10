@@ -1,12 +1,13 @@
 // src/services/ProductService.js
 import { API_URL } from '../api/config';
 
-const API_URL = `${API_URL}/api/productos`;
+// Esta es la ruta base correcta para productos
+const PRODUCTOS_URL = `${API_URL}/api/productos`;
 
-// 1. Obtener todos los productos (Para el Catálogo y el Admin)
+// 1. Obtener todos los productos
 export const getAllProductos = async () => {
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch(PRODUCTOS_URL);
         if (!response.ok) {
             throw new Error('Error al cargar los productos');
         }
@@ -17,16 +18,17 @@ export const getAllProductos = async () => {
     }
 };
 
-// 2. Eliminar un producto (Solo para Admin)
+// 2. Eliminar un producto
 export const deleteProducto = async (id) => {
-    const token = localStorage.getItem('token'); // Necesitamos el token de admin
+    const token = localStorage.getItem('token');
     if (!token) return false;
 
     try {
-        const response = await fetch(`${API_URL}/${id}`, {
+        // CORREGIDO: Usamos PRODUCTOS_URL en lugar de API_URL
+        const response = await fetch(`${PRODUCTOS_URL}/${id}`, { 
             method: 'DELETE',
             headers: {
-                'Authorization': `Bearer ${token}` // Importante: Sin esto, el backend te dirá "403 Prohibido"
+                'Authorization': `Bearer ${token}`
             }
         });
         return response.ok;
@@ -42,10 +44,11 @@ export const createProducto = async (producto) => {
     if (!token) return null;
 
     try {
-        const response = await fetch(API_URL, {
+        // CORREGIDO: Usamos PRODUCTOS_URL
+        const response = await fetch(PRODUCTOS_URL, { 
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${token}`, // ¡Seguridad ante todo!
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(producto)
@@ -58,13 +61,16 @@ export const createProducto = async (producto) => {
         return null;
     }
 };
+
+// 4. Actualizar producto
 export const updateProducto = async (id, producto) => {
     const token = localStorage.getItem('token');
     if (!token) return null;
 
     try {
-        const response = await fetch(`${API_URL}/${id}`, {
-            method: 'PUT', // Método PUT para actualizar
+        // CORREGIDO: Usamos PRODUCTOS_URL
+        const response = await fetch(`${PRODUCTOS_URL}/${id}`, { 
+            method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'

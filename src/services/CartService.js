@@ -2,7 +2,7 @@ import { API_URL } from '../api/config';
 
 const CARRITO_URL = `${API_URL}/api/carrito`; 
 
-// 1. Obtener el carrito
+// 1. Obtener el carrito (ESTO ESTÁ PERFECTO)
 export const getCarrito = async () => {
     const token = localStorage.getItem('token');
     if (!token) return null;
@@ -24,13 +24,14 @@ export const getCarrito = async () => {
     }
 };
 
-// 2. Eliminar un item (NUEVO)
+// 2. Eliminar un item
 export const eliminarItem = async (itemId) => {
     const token = localStorage.getItem('token');
     if (!token) return false;
 
     try {
-        const response = await fetch(`${API_URL}/items/${itemId}`, { // Ojo a la comilla invertida `
+        // AGREGUÉ "/api" AQUÍ 👇
+        const response = await fetch(`${API_URL}/api/items/${itemId}`, { 
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -43,13 +44,14 @@ export const eliminarItem = async (itemId) => {
     }
 };
 
-// 3. Actualizar cantidad (NUEVO)
+// 3. Actualizar cantidad
 export const actualizarCantidad = async (itemId, nuevaCantidad) => {
     const token = localStorage.getItem('token');
     if (!token) return false;
 
     try {
-        const response = await fetch(`${API_URL}/items/${itemId}`, {
+        // AGREGUÉ "/api" AQUÍ TAMBIÉN 👇
+        const response = await fetch(`${API_URL}/api/items/${itemId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
