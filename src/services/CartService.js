@@ -1,5 +1,5 @@
 
-const API_URL = 'http://localhost:8080/api/carrito'; 
+const API_URL = `${API_URL}/api/carrito`; 
 
 // 1. Obtener el carrito
 export const getCarrito = async () => {

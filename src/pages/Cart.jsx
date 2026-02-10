@@ -70,7 +70,7 @@ function Cart() {
     if (!window.confirm(`¿Confirmar compra por $${total.toFixed(2)}? 💳`)) return;
 
     try {
-      const response = await fetch('http://localhost:8080/api/ordenes/checkout', {
+      const response = await fetch(`${API_URL}/ordenes/checkout`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

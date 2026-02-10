@@ -7,7 +7,7 @@ function Home() {
 
   // 1. CARGAR PRODUCTOS AL INICIO
   useEffect(() => {
-    fetch('http://localhost:8080/api/productos')
+    fetch(`${API_URL}/api/productos`)
       .then(response => response.json())
       .then(data => {
         setProductos(data)
@@ -29,7 +29,7 @@ function Home() {
     }
 
     try {
-      const response = await fetch('http://localhost:8080/api/carrito/add', { 
+      const response = await fetch(`${API_URL}/api/carrito/add`, { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

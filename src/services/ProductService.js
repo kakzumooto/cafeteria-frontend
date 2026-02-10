@@ -1,6 +1,6 @@
 // src/services/ProductService.js
 
-const API_URL = 'http://localhost:8080/api/productos';
+const API_URL = `${API_URL}/api/productos`;
 
 // 1. Obtener todos los productos (Para el Catálogo y el Admin)
 export const getAllProductos = async () => {
