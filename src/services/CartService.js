@@ -1,6 +1,6 @@
 import { API_URL } from '../api/config';
 
-const API_URL = `${API_URL}/api/carrito`; 
+const CARRITO_URL = `${API_URL}/api/carrito`; 
 
 // 1. Obtener el carrito
 export const getCarrito = async () => {
@@ -8,7 +8,7 @@ export const getCarrito = async () => {
     if (!token) return null;
 
     try {
-        const response = await fetch(API_URL, {
+        const response = await fetch(CARRITO_URL, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -49,7 +49,7 @@ export const actualizarCantidad = async (itemId, nuevaCantidad) => {
     if (!token) return false;
 
     try {
-        const response = await fetch(`${API_URL}/items/${itemId}`, { // Ojo a la comilla invertida `
+        const response = await fetch(`${API_URL}/items/${itemId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
