@@ -1,2 +1,2 @@
 // src/api/config.js
-export const API_URL = 'https://aroma-borealis-production.up.railway.app';
+export const API_URL = 'https://cafeteria-frontend-ochre.vercel.app';
