@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import '../App.css'
+import { API_URL } from '../api/config';
 
 function Home() {
   const [productos, setProductos] = useState([])

@@ -1,3 +1,4 @@
+import { API_URL } from '../api/config';
 
 const API_URL = `${API_URL}/api/carrito`; 
 

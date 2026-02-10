@@ -1,4 +1,5 @@
 // src/services/ProductService.js
+import { API_URL } from '../api/config';
 
 const API_URL = `${API_URL}/api/productos`;
 

@@ -2,6 +2,8 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import '../App.css'
+import { API_URL } from '../api/config';
+
 
 function Register() {
   const [email, setEmail] = useState('')

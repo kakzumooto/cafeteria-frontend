@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getCarrito, eliminarItem, actualizarCantidad } from '../services/CartService';
 import '../App.css'; 
+import { API_URL } from '../api/config';
 
 function Cart() {
   const [items, setItems] = useState([]);
