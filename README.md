@@ -1,16 +1,58 @@
-# React + Vite
+# ☕ Aroma Borealis - E-commerce de Café
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Plataforma de comercio electrónico Full Stack para la venta de café de especialidad y accesorios. Incluye gestión de inventario, carrito de compras, autenticación segura y panel de administración.
 
-Currently, two official plugins are available:
+![Aroma Borealis Demo](PON_AQUI_EL_LINK_DE_TU_IMAGEN_SI_TIENES)
+*(Tip: Puedes arrastrar la imagen que me mandaste directamente al editor de GitHub y te genera el link solo)*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologías Utilizadas
 
-## React Compiler
+* **Frontend:** React, Vite, CSS3 (Responsive Design).
+* **Backend:** Java, Spring Boot, Spring Security (JWT).
+* **Base de Datos:** MySQL.
+* **Herramientas:** Postman, Git.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Funcionalidades Principales
 
-## Expanding the ESLint configuration
+1.  **Catálogo Público:** Visualización de productos con imágenes y control de stock.
+2.  **Autenticación y Seguridad:** Login y Registro con JWT (JSON Web Tokens) y roles (USER/ADMIN).
+3.  **Carrito de Compras:** Lógica de agregar, sumar totales y validar existencias.
+4.  **Panel de Administración (Protegido):**
+    * CRUD completo de productos (Crear, Leer, Actualizar, Borrar).
+    * Gestión de imágenes y stock en tiempo real.
+5.  **Diseño Responsive:** Adaptable a dispositivos móviles y escritorio.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧪 Credenciales de Demo (Para Pruebas)
+
+Si descargas y ejecutas el proyecto localmente, puedes usar estos usuarios pre-configurados (asegúrate de crearlos en tu base de datos o ejecutar el script SQL adjunto):
+
+### 👤 Usuario Administrador (Acceso Total)
+* **Email:** `jefe@aroma.com` (o el que tú hayas puesto)
+* **Password:** `12345`
+* **Rol:** `ROLE_ADMIN` (Permite ver el botón "Panel Admin" y editar productos).
+
+### 👤 Usuario Cliente
+* **Email:** `cliente@aroma.com`
+* **Password:** `12345`
+* **Rol:** `ROLE_USER` (Solo puede comprar y ver sus pedidos).
+
+---
+
+## ⚙️ Instalación y Ejecución
+
+### Prerrequisitos
+* Java JDK 17+
+* Node.js & npm
+* MySQL
+
+### Pasos
+1.  Clonar el repositorio.
+2.  Configurar la base de datos en `application.properties`.
+3.  Ejecutar Backend: `./mvnw spring-boot:run`
+4.  Ejecutar Frontend: `npm install` y luego `npm run dev`.
+
+---
+
+Developed by [Tu Nombre] - Ingeniero en Sistemas

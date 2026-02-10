@@ -13,6 +13,8 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    
+
     const loginData = {
       email: email,
       password: password
@@ -29,13 +31,25 @@ function Login() {
 
       if (response.ok) {
         const data = await response.json()
-        setMensaje('¡Login exitoso!')
+        setMensaje('¡Login exitoso! 🔓')
         
+      
         localStorage.setItem('token', data.token) 
-        console.log("Token guardado:", data.token)
         
+        localStorage.setItem('email', email) 
+
+        if (data.rol) {
+            localStorage.setItem('role', data.rol)
+        } else {
+           
+            localStorage.removeItem('role') 
+        }
+
+        console.log("Datos guardados:", email, data.token)
+        
+     
         setTimeout(() => {
-          navigate('/')
+          window.location.href = '/'
         }, 1000)
 
       } else {

@@ -5,6 +5,9 @@ import Home from './pages/Home'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import './App.css'
+import Cart from './pages/Cart';
+import Orders from './pages/Orders';
+import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
   return (
@@ -19,7 +22,12 @@ function App() {
           
           <Route path="/login" element={<Login />} />
           
-          <Route path="/carrito" element={<h2>Aquí irá el Carrito</h2>} />
+          <Route path="/mis-compras" element={<Orders />} />
+
+          <Route path="/carrito" element={<Cart />} />
+
+          <Route path="/admin" element={<AdminDashboard />} />
+
         </Routes>
       </div>
     </BrowserRouter>
