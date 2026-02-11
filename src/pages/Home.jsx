@@ -45,15 +45,10 @@ function Home() {
   return (
     <div className="tienda-container">
       <h1 className="titulo-principal">☕ Tienda de Café "Aroma Borealis"</h1>
-      
       {loading && <p style={{textAlign: 'center', fontSize:'1.2rem'}}>Cargando el mejor café... ⏳</p>}
-
-      {!loading && (!productos || productos.length === 0) && (
-         <div style={{textAlign:'center', padding:'50px'}}>
-            <h3>No hay productos disponibles por ahora 😢</h3>
-         </div>
+      {!loading && productos.length === 0 && (
+         <div style={{textAlign:'center', padding:'50px'}}><h3>No hay productos disponibles 😢</h3></div>
       )}
-
       <div className="productos-grid">
         {Array.isArray(productos) && productos.map((producto) => (
           <div key={producto.id} className="producto-card">
@@ -71,16 +66,10 @@ function Home() {
                    {producto.stock > 0 ? `Stock: ${producto.stock}` : 'Agotado'}
                 </span>
             </div>
-            <p style={{fontSize:'0.9rem', color:'#555', lineHeight:'1.4', marginBottom:'15px'}}>
-                {producto.descripcion}
-            </p>
+            <p style={{fontSize:'0.9rem', color:'#555', lineHeight:'1.4', marginBottom:'15px'}}>{producto.descripcion}</p>
             <div style={{marginTop:'auto'}}>
                <div className="precio">${producto.precio}</div>
-               <button 
-                  className="btn-agregar"
-                  onClick={() => handleAgregar(producto)}
-                  disabled={producto.stock === 0}
-                >
+               <button className="btn-agregar" onClick={() => handleAgregar(producto)} disabled={producto.stock === 0}>
                   {producto.stock === 0 ? 'Sin Stock' : 'Añadir al Carrito 🛒'}
                 </button>
             </div>
