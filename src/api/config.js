@@ -1,1 +1,1 @@
-export const API_URL = 'https://aroma-borealis-production.up.railway.app';
+export const API_URL = 'https://tiendacafe-production-c88d.up.railway.app';

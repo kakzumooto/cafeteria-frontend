@@ -6,23 +6,25 @@ function Home() {
   const [productos, setProductos] = useState([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
+useEffect(() => {
     setLoading(true);
+    // Usamos la URL del config
     fetch(`${API_URL}/api/productos`)
       .then(response => {
         if (!response.ok) throw new Error('Error en servidor');
         return response.json();
       })
       .then(data => {
+        // Si data no es array, ponemos lista vacía
         setProductos(Array.isArray(data) ? data : []);
         setLoading(false);
       })
       .catch(error => {
         console.error('Error:', error);
-        setProductos([]); 
+        setProductos([]); // Evita que truene el .map()
         setLoading(false);
       });
-  }, []);
+}, []);
 
   const handleAgregar = async (producto) => {
     const token = localStorage.getItem('token');
