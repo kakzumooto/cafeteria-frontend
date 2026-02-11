@@ -1,1 +1,1 @@
-export const API_URL = 'https://tiendacafe-production-c88d.up.railway.app/api';
+export const API_URL = 'https://tiendacafe-production-c88d.up.railway.app';

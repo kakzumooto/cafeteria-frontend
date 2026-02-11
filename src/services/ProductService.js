@@ -3,7 +3,7 @@ import { API_URL } from '../api/config';
 
 
 // Esta es la ruta base correcta para productos
-const PRODUCTOS_URL = `${API_URL}/productos`;
+const PRODUCTOS_URL = `${API_URL}/api/productos`;
 
 // 1. Obtener todos los productos
 export const getAllProductos = async () => {
@@ -25,7 +25,7 @@ export const deleteProducto = async (id) => {
     if (!token) return false;
 
     try {
-        // CORREGIDO: Usamos PRODUCTOS_URL en lugar de API_URL
+
         const response = await fetch(`${PRODUCTOS_URL}/${id}`, { 
             method: 'DELETE',
             headers: {
@@ -45,7 +45,6 @@ export const createProducto = async (producto) => {
     if (!token) return null;
 
     try {
-        // CORREGIDO: Usamos PRODUCTOS_URL
         const response = await fetch(PRODUCTOS_URL, { 
             method: 'POST',
             headers: {

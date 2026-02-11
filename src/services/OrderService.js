@@ -1,7 +1,7 @@
 // src/services/OrderService.js
 import { API_URL } from '../api/config';
 
-const ORDENES_URL = `${API_URL}/ordenes`;
+const ORDENES_URL = `${API_URL}/api/ordenes`;
 
 export const getMisOrdenes = async () => {
     const token = localStorage.getItem('token');

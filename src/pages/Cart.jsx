@@ -71,7 +71,7 @@ function Cart() {
     if (!window.confirm(`¿Confirmar compra por $${total.toFixed(2)}? 💳`)) return;
 
     try {
-      const response = await fetch(`${API_URL}/ordenes/checkout`, {
+      const response = await fetch(`${API_URL}/api/ordenes/checkout`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

@@ -9,7 +9,7 @@ function Home() {
 useEffect(() => {
     setLoading(true);
     // Usamos la URL del config
-    fetch(`${API_URL}/productos`)
+    fetch(`${API_URL}/api/productos`)
       .then(response => {
         if (!response.ok) throw new Error('Error en servidor');
         return response.json();
@@ -31,7 +31,7 @@ useEffect(() => {
     if (!token) { alert("🔒 ¡Debes iniciar sesión!"); return; }
 
     try {
-      const response = await fetch(`${API_URL}/carrito/add`, { 
+      const response = await fetch(`${API_URL}/api/carrito/add`, { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
