@@ -7,18 +7,22 @@ function Home() {
   const [loading, setLoading] = useState(true)
 
   // 1. CARGAR PRODUCTOS AL INICIO
-  useEffect(() => {
-    fetch(`${API_URL}/productos`)
-      .then(response => response.json())
+useEffect(() => {
+    fetch('/api/productos') 
+      .then(response => {
+        if (!response.ok) throw new Error('Error en la respuesta');
+        return response.json();
+      })
       .then(data => {
-        setProductos(data)
-        setLoading(false)
+        setProductos(Array.isArray(data) ? data : []);
+        setLoading(false);
       })
       .catch(error => {
-        console.error('Error:', error)
-        setLoading(false)
-      })
-  }, [])
+        console.error('Error:', error);
+        setProductos([]); 
+        setLoading(false);
+      });
+}, []);
 
   // 2. FUNCIÓN PARA AGREGAR AL CARRITO
   const handleAgregar = async (producto) => {
