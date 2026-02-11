@@ -1,6 +1,6 @@
 import { API_URL } from '../api/config';
 
-const CARRITO_URL = `${API_URL}/api/carrito`; 
+const CARRITO_URL = `${API_URL}/carrito`; 
 
 // 1. Obtener el carrito (ESTO ESTÁ PERFECTO)
 export const getCarrito = async () => {
@@ -31,7 +31,7 @@ export const eliminarItem = async (itemId) => {
 
     try {
         // AGREGUÉ "/api" AQUÍ 👇
-        const response = await fetch(`${API_URL}/api/items/${itemId}`, { 
+        const response = await fetch(`${API_URL}/items/${itemId}`, { 
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -51,7 +51,7 @@ export const actualizarCantidad = async (itemId, nuevaCantidad) => {
 
     try {
         // AGREGUÉ "/api" AQUÍ TAMBIÉN 👇
-        const response = await fetch(`${API_URL}/api/items/${itemId}`, {
+        const response = await fetch(`${API_URL}/items/${itemId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

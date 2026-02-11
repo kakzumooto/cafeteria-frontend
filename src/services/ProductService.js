@@ -3,7 +3,7 @@ import { API_URL } from '../api/config';
 
 
 // Esta es la ruta base correcta para productos
-const PRODUCTOS_URL = `${API_URL}/api/productos`;
+const PRODUCTOS_URL = `${API_URL}/productos`;
 
 // 1. Obtener todos los productos
 export const getAllProductos = async () => {
