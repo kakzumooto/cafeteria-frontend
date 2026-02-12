@@ -1,66 +1,66 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../App.css'; 
 
 function Navbar() {
   const navigate = useNavigate();
+  const [menuAbierto, setMenuAbierto] = useState(false); // Estado para el menú móvil
   
-  // 1. LEER DATOS DEL STORAGE
   const token = localStorage.getItem('token');
   const userEmail = localStorage.getItem('email'); 
   const userRole = localStorage.getItem('role'); 
 
-  // 2. LOGICA DE ADMIN (Rol o Email específico)
   const isAdmin = userRole === 'ROLE_ADMIN' || userEmail === 'jefe@aroma.com';
 
   const handleLogout = () => {
-    localStorage.clear(); // Borra todo (token, carrito, email...)
-    alert("¡Hasta luego! 👋");
-    window.location.href = '/login'; // Recarga para limpiar menú
+    localStorage.clear();
+    setMenuAbierto(false);
+    window.location.href = '/login';
   };
 
+  // Función para cerrar el menú al hacer clic en un link
+  const cerrarMenu = () => setMenuAbierto(false);
+
   return (
-    <nav className="navbar" style={{background: '#2c3e50', padding: '1rem', color: 'white'}}>
-      <div className="tienda-container nav-content" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '0 auto'}}>
+    <nav className="navbar">
+      <div className="tienda-container nav-content">
         {/* LOGO */}
-        <Link to="/" style={{textDecoration: 'none', color: 'white', fontSize: '1.5rem', fontWeight: 'bold'}}>
+        <Link to="/" className="navbar-logo" onClick={cerrarMenu}>
           ☕ Aroma Borealis
         </Link>
 
-        {/* ENLACES */}
-        <div className="nav-links" style={{display: 'flex', gap: '20px', alignItems: 'center'}}>
-          <Link to="/" style={{color: 'white', textDecoration: 'none'}}>Inicio</Link>
+        {/* BOTÓN HAMBURGUESA (Solo se ve en móvil) */}
+        <button className="menu-toggle" onClick={() => setMenuAbierto(!menuAbierto)}>
+          {menuAbierto ? '✕' : '☰'}
+        </button>
+
+        {/* ENLACES (Se muestran/ocultan con la clase 'active') */}
+        <div className={`nav-links ${menuAbierto ? 'active' : ''}`}>
+          <Link to="/" onClick={cerrarMenu}>Inicio</Link>
           
-          {/* ENLACE DE ADMIN (Solo si es jefe) */}
           {isAdmin && (
-            <Link to="/admin" style={{color: '#f1c40f', fontWeight: 'bold', textDecoration: 'none', border:'1px solid #f1c40f', padding:'5px 10px', borderRadius:'4px'}}>
-              🛠️ Panel Admin
+            <Link to="/admin" className="btn-admin-nav" onClick={cerrarMenu}>
+              🛠️ Admin
             </Link>
           )}
 
-          {/* SI ESTÁ LOGUEADO */}
           {token ? (
             <>
-              <Link to="/mis-compras" style={{color: 'white', textDecoration: 'none'}}>📦 Mis Pedidos</Link>
+              <Link to="/mis-compras" onClick={cerrarMenu}>📦 Pedidos</Link>
+              <Link to="/carrito" onClick={cerrarMenu}>🛒 Carrito</Link>
               
-              <Link to="/carrito" style={{color: 'white', textDecoration: 'none'}}>🛒 Carrito</Link>
-              
-              <span style={{fontSize: '0.8rem', opacity: 0.8, borderLeft:'1px solid #555', paddingLeft:'10px'}}>
-                | {userEmail} |
+              <span className="user-info-nav">
+                {userEmail}
               </span>
               
-              <button 
-                onClick={handleLogout} 
-                className="btn-eliminar" 
-                style={{cursor:'pointer', marginLeft:'5px'}}
-              >
+              <button onClick={handleLogout} className="btn-logout-nav">
                 Salir 🚪
               </button>
             </>
           ) : (
-            /* SI NO ESTÁ LOGUEADO */
             <>
-              <Link to="/login" style={{color: 'white', textDecoration: 'none'}}>Login</Link>
-              <Link to="/register" style={{background: '#3498db', padding: '5px 10px', borderRadius: '4px', color: 'white', textDecoration: 'none'}}>Registro</Link>
+              <Link to="/login" onClick={cerrarMenu}>Login</Link>
+              <Link to="/register" className="btn-register-nav" onClick={cerrarMenu}>Registro</Link>
             </>
           )}
         </div>
