@@ -2,8 +2,7 @@
 
 Plataforma de comercio electrónico Full Stack para la venta de café de especialidad y accesorios. Incluye gestión de inventario, carrito de compras, autenticación segura y panel de administración.
 
-![Aroma Borealis Demo](PON_AQUI_EL_LINK_DE_TU_IMAGEN_SI_TIENES)
-*(Tip: Puedes arrastrar la imagen que me mandaste directamente al editor de GitHub y te genera el link solo)*
+
 
 ## 🚀 Tecnologías Utilizadas
 
@@ -29,7 +28,7 @@ Plataforma de comercio electrónico Full Stack para la venta de café de especia
 Si descargas y ejecutas el proyecto localmente, puedes usar estos usuarios pre-configurados (asegúrate de crearlos en tu base de datos o ejecutar el script SQL adjunto):
 
 ### 👤 Usuario Administrador (Acceso Total)
-* **Email:** `jefe@aroma.com` (o el que tú hayas puesto)
+* **Email:** `jefe@aroma.com`
 * **Password:** `12345`
 * **Rol:** `ROLE_ADMIN` (Permite ver el botón "Panel Admin" y editar productos).
 
@@ -55,4 +54,4 @@ Si descargas y ejecutas el proyecto localmente, puedes usar estos usuarios pre-c
 
 ---
 
-Developed by [Tu Nombre] - Ingeniero en Sistemas
+Developed by Héctor zacapala - Ingeniero en Sistemas

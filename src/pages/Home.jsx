@@ -5,8 +5,10 @@ import { API_URL } from '../api/config';
 function Home() {
   const [productos, setProductos] = useState([])
   const [loading, setLoading] = useState(true)
+  // Estado para la alerta
+  const [alerta, setAlerta] = useState({ visible: false, mensaje: '', tipo: '' })
 
-useEffect(() => {
+  useEffect(() => {
     setLoading(true);
     // Usamos la URL del config
     fetch(`${API_URL}/api/productos`)
@@ -15,7 +17,6 @@ useEffect(() => {
         return response.json();
       })
       .then(data => {
-        // Si data no es array, ponemos lista vacía
         setProductos(Array.isArray(data) ? data : []);
         setLoading(false);
       })
@@ -24,11 +25,22 @@ useEffect(() => {
         setProductos([]); // Evita que truene el .map()
         setLoading(false);
       });
-}, []);
+  }, []);
+
+  // Función para mostrar la alerta
+  const mostrarAlerta = (mensaje, tipo) => {
+    setAlerta({ visible: true, mensaje, tipo });
+    setTimeout(() => {
+      setAlerta({ visible: false, mensaje: '', tipo: '' });
+    }, 3000); // Desaparece en 3 segundos
+  };
 
   const handleAgregar = async (producto) => {
     const token = localStorage.getItem('token');
-    if (!token) { alert("🔒 ¡Debes iniciar sesión!"); return; }
+    if (!token) { 
+      mostrarAlerta("🔒 ¡Debes iniciar sesión para comprar!", "error"); 
+      return; 
+    }
 
     try {
       const response = await fetch(`${API_URL}/api/carrito/add`, { 
@@ -39,18 +51,31 @@ useEffect(() => {
         },
         body: JSON.stringify({ productoId: producto.id, cantidad: 1 })
       });
-      if (response.ok) alert(`✅ ¡${producto.nombre} agregado!`);
-      else alert(`❌ Error al agregar.`);
-    } catch (error) { alert("Error de conexión."); }
+      if (response.ok) {
+        mostrarAlerta(`✅ ¡${producto.nombre} agregado al carrito!`, "exito");
+      } else {
+        mostrarAlerta(`❌ Error al agregar.`, "error");
+      }
+    } catch (error) { 
+      mostrarAlerta("⚠️ Error de conexión con el servidor.", "error"); 
+    }
   };
 
   return (
     <div className="tienda-container">
+      {alerta.visible && (
+        <div className={`alerta-personalizada ${alerta.tipo}`}>
+          {alerta.mensaje}
+        </div>
+      )}
       <h1 className="titulo-principal">☕ Tienda de Café "Aroma Borealis"</h1>
+      
       {loading && <p style={{textAlign: 'center', fontSize:'1.2rem'}}>Cargando el mejor café... ⏳</p>}
+      
       {!loading && productos.length === 0 && (
          <div style={{textAlign:'center', padding:'50px'}}><h3>No hay productos disponibles 😢</h3></div>
       )}
+      
       <div className="productos-grid">
         {Array.isArray(productos) && productos.map((producto) => (
           <div key={producto.id} className="producto-card">
