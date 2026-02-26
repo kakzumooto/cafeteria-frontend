@@ -2,6 +2,7 @@
 
 Plataforma de comercio electrónico Full Stack para la venta de café de especialidad y accesorios. Incluye gestión de inventario, carrito de compras, autenticación segura y panel de administración.
 
+![cafe](https://github.com/user-attachments/assets/0f4926be-8878-470d-a778-cd0d3f855746)
 
 
 ## 🚀 Tecnologías Utilizadas
@@ -52,6 +53,5 @@ Si descargas y ejecutas el proyecto localmente, puedes usar estos usuarios pre-c
 3.  Ejecutar Backend: `./mvnw spring-boot:run`
 4.  Ejecutar Frontend: `npm install` y luego `npm run dev`.
 
----
 
 Developed by Héctor zacapala - Ingeniero en Sistemas
